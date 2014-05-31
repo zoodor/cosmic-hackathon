@@ -17,7 +17,11 @@ class Hackathon < Sinatra::Base
 
 	get '/' do
 		erb :index
-	end
+  end
+
+  get '/patient-details' do
+    erb :patient_details
+  end
 
 	get '/cosmic_questions' do
 		erb :cosmic_questions
