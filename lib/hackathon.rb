@@ -8,6 +8,7 @@ require_relative 'cosmic_answer'
 require_relative 'patient'
 require_relative 'feelings_statements'
 require_relative 'feelings_ratings'
+require_relative 'medical_professional'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -16,6 +17,7 @@ class Hackathon < Sinatra::Base
 	enable :sessions
 
 	set :views, File.join(File.dirname(__FILE__), '..', 'views')
+	set :public_folder, File.join(File.dirname(__FILE__), '..', 'public')
 
 	get '/' do
 
@@ -48,6 +50,17 @@ class Hackathon < Sinatra::Base
 		end
 
 		redirect to('/')
+	end
+
+	get '/rate_medical_team' do
+		@professionals = MedicalProfessional.professionals
+		erb :rate_medical_team
+	end
+
+	post '/rate_medical_team' do
+		print request.body
+		@professionals = MedicalProfessional.professionals
+		erb :rate_medical_team
 	end
 
 	post '/patient_details' do

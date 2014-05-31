@@ -1,0 +1,34 @@
+    <style>
+      .medical-professional {
+      float:left;
+      width:100px; height:100px;
+      margin:10px;
+      padding:10px;
+      border:1px solid #aaaaaa;
+      position:relative;
+      }
+      .medical-professional-image {
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:-1;
+      }
+      .button {
+      width:100px;
+      height:50px;
+      background-color: #450078;
+      display: block;
+      float:left;
+      }
+    </style>
+    <script src='/javascript/rate_medical_team.js'></script>
+
+    <% @professionals.each do |professional| %>
+    <div id="<%= professional.id %>" class="medical-professional" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <img src="/images/<%= professional.image_url%>" class="medical-professional-image" width="100" height="100">
+    </div>
+    <% end %>
+
+    <img id="drag1" src="/images/star.jpg" draggable="true" ondragstart="drag(event)" width="35" height="35">
+
+    <div class="button" onclick="submit()">Submit</div>
