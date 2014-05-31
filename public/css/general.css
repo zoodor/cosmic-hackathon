@@ -4,10 +4,12 @@ body {
 	font-size: 2em;
 	text-align: center;
 	padding: 5%;
+	/*height: 100%;*/
 }
 
 h1{
-	font-size: 2.5em;
+	font-size: 2.4em;
+	margin-bottom: 2%;
 }
 
 a{
@@ -21,6 +23,10 @@ li{
 	color: black;
 	list-style-type: none;
 	padding: 1em;
+}
+
+li:hover{
+	cursor: pointer;
 }
 
 #sign-in{
@@ -39,6 +45,16 @@ li{
 	color: blue;
 	cursor: pointer;
 }
+
+#mascot{
+	text-align: right;
+	right: 20;
+	bottom: 20;
+	/*vertical-align: bottom;*/
+	position: fixed;
+}
+
+
 
 
 

@@ -1,15 +1,30 @@
-#start-buttons ul{
+#start-buttons{
 	/*display: inline;*/
+
 	width: 100%;
+	margin-top: 2%;
 }
 
 #start-buttons li{
 	display: inline-block;
-	width: 30%;
-	/*height: ;*/
+	width: 25%;
+	height: 2.7em;
+
 	vertical-align: middle;
 	
+
+	/*text-align: center;*/
+	
 }
+
+
+/*#start-buttons li:before{
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+	
 
 
 #start-buttons li:hover{
@@ -17,7 +32,35 @@
 	/*color: blue;*/
 }
 
+/*#start-buttons li a {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
+}*/
+
 #start-buttons a:hover{
 	/*background-color: white;*/
 	color: blue;
+}
+
+/* This parent can be any width and height */
+.block {
+  text-align: center;
+}
+ 
+/* The ghost, nudged to maintain perfect centering */
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */ 
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
 }
