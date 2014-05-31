@@ -1,0 +1,45 @@
+body {
+	background-color: rgb(0,173,245);
+	color: white;
+	font-size: 2em;
+	text-align: center;
+	padding: 5%;
+}
+
+h1{
+	font-size: 2.5em;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+li{
+	border-radius: 10;
+	background-color: pink;
+	color: black;
+	list-style-type: none;
+	padding: 1em;
+}
+
+#sign-in{
+	text-align: center;
+	border-radius: 10;
+	background-color: pink;
+	padding: 2%;
+	color: white;
+	width: 10%;
+	margin-left:43%;
+	margin-top: 5%;
+}
+
+#sign-in:hover{
+	background-color: white;
+	color: blue;
+	cursor: pointer;
+}
+
+
+
+

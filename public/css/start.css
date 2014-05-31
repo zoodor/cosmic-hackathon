@@ -1,0 +1,23 @@
+#start-buttons ul{
+	/*display: inline;*/
+	width: 100%;
+}
+
+#start-buttons li{
+	display: inline-block;
+	width: 30%;
+	/*height: ;*/
+	vertical-align: middle;
+	
+}
+
+
+#start-buttons li:hover{
+	background-color: white;
+	/*color: blue;*/
+}
+
+#start-buttons a:hover{
+	/*background-color: white;*/
+	color: blue;
+}
