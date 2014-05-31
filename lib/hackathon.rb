@@ -1,16 +1,14 @@
 require 'sinatra'
 require 'data_mapper'
-# require './data_mapper_setup'
-
 
 DataMapper.setup(:default, "postgres://localhost/hackathon")
 
 require_relative 'cosmic_questions'
+require_relative 'cosmic_answer'
 require_relative 'patient'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
-# DataMapper.auto_migrate!
 
 class Hackathon < Sinatra::Base
 	enable :sessions
@@ -18,7 +16,9 @@ class Hackathon < Sinatra::Base
 	set :views, File.join(File.dirname(__FILE__), '..', 'views')
 
 	get '/' do
+
 		erb :index
+
 	end
 
 	get '/patient_details' do
@@ -26,16 +26,22 @@ class Hackathon < Sinatra::Base
 	end
 
 	get '/cosmic_questions' do
+		@questions = CosmicQuestion.questions
 		erb :cosmic_questions
 	end
 
 	post '/cosmic_questions' do
-		title=params["title"]
-		answer=params["yes_no"]
+		@questions = CosmicQuestion.questions
 
-		CosmicQuestion.create(
-			:title => title,
-			:answer => answer)
+		@questions.each do |question|
+			question_id = question.id
+			answer=params["yes_no_#{question_id}"]
+
+			CosmicAnswer.create(
+				:question_id => question_id,
+				:answer => answer)
+		end
+
 		redirect to('/')
 	end
 
