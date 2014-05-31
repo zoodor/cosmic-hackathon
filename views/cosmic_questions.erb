@@ -1,7 +1,7 @@
 <h2>Cosmic Questions</h2>
 
 <article class="questions">
-	<form action="/cosmic_questions" method="post">
+	<form action="/<%= @patient_id %>/cosmic_questions" method="post">
 		
 		<section class="question">
 			<% @questions.each do |question| %>

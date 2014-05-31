@@ -25,19 +25,22 @@ class Hackathon < Sinatra::Base
 		erb :patient_details
 	end
 
-	get '/cosmic_questions' do
+	get '/:id/cosmic_questions' do
 		@questions = CosmicQuestion.questions
+		@patient_id = params[:id]
 		erb :cosmic_questions
 	end
 
-	post '/cosmic_questions' do
+	post '/:id/cosmic_questions' do
 		@questions = CosmicQuestion.questions
+		patient_id = params[:id]
 
 		@questions.each do |question|
 			question_id = question.id
 			answer=params["yes_no_#{question_id}"]
 
 			CosmicAnswer.create(
+				:patient_id => patient_id,
 				:question_id => question_id,
 				:answer => answer)
 		end
