@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require 'json'
 
 DataMapper.setup(:default, "postgres://localhost/hackathon")
 
@@ -9,6 +10,7 @@ require_relative 'patient'
 require_relative 'feelings_statements'
 require_relative 'feelings_ratings'
 require_relative 'medical_professional'
+require_relative 'medical_professional_rating'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -58,7 +60,15 @@ class Hackathon < Sinatra::Base
 	end
 
 	post '/rate_medical_team' do
-		print request.body
+		post_data = JSON.parse(request.body.read)
+
+		post_data.each do |key, value|
+			MedicalProfessionalRating.create(
+				:patient_id => 1,
+				:medical_professional_id => key,
+				:rating => value
+			)
+	 	end
 		@professionals = MedicalProfessional.professionals
 		erb :rate_medical_team
 	end
