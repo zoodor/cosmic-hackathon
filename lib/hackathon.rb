@@ -39,19 +39,19 @@ class Hackathon < Sinatra::Base
 
 	post '/:id/cosmic_questions' do
 		@questions = CosmicQuestion.questions
-		patient_id = params[:id]
+		@patient_id = params[:id]
 
 		@questions.each do |question|
 			question_id = question.id
 			answer=params["yes_no_#{question_id}"]
 
 			CosmicAnswer.create(
-				:patient_id => patient_id,
+				:patient_id => @patient_id,
 				:question_id => question_id,
 				:answer => answer)
 		end
 
-		redirect to('/')
+		redirect to('#{@patient_id}/start')
 	end
 
 	get '/:patient_id/rate_medical_team' do
@@ -87,18 +87,20 @@ class Hackathon < Sinatra::Base
 	end
 
 	get '/:id/start' do
-		id = params[:id]
-		@patient = Patient.get(id)
+		@patient_id = params[:id]
+		@patient = Patient.get(@patient_id)
+		
 		erb :start
 	end
 
 	get '/:id/feelings' do
+		@patient_id = params[:id]
 		@statements = FeelingsStatement.statements
 		erb :feelings
 	end
 
 	post '/:id/feelings' do
-		patient_id = params[:id]
+		@patient_id = params[:id]
 		@statements = FeelingsStatement.statements
 
 		@statements.each do |statement|
@@ -106,10 +108,11 @@ class Hackathon < Sinatra::Base
 			rating = params["statement_#{statement_id}"]
 
 			FeelingsRating.create(
-				:patient_id => patient_id,
+				:patient_id => @patient_id,
 				:statement_id => statement_id,
 				:rating => rating)
 		end
+		redirect to('#{@patient_id}/feelings')
 	end
 
 end

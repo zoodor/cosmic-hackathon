@@ -1,2 +1,10 @@
+<h1>Hi <%= @patient.name %>!</h1>
+<p>Thanks for filling out our survey, we hope you have fun with it!</p>
 
-        <h1>Hi <%= @patient.name %></h1>
+<p>Please select an item below to get started:</p>
+
+<ul id="start-buttons">
+	<li><a href="/<%= @patient_id %>/feelings">How Did Your Stay Make You Feel?</a></li>
+	<li><a href="/<%= @patient_id %>/faces_and_stars">Tell Us About Your Favourite Doctors and Nurses!</a></li>
+	<li><a href="/<%= @patient_id %>/cosmic_questions">What Do You Think of Cosmic?</a></li>
+</ul>
