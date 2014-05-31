@@ -7,7 +7,7 @@ input[type=radio] {
     margin:10px;
 }
 
-input[type=radio]:hover + label:hover{
+input[type=radio]:hover + label:hover {
 	background-color: pink;
 	cursor: pointer;
 }
@@ -33,7 +33,24 @@ input[type=radio]:checked + label {
     background-color:pink;
 }
 
-.question{
+.question {
+  clear: both;
 	margin: 1em 0;
-	text-align: left;
+	text-align: right;
+  right: 50px;
+}
+
+.question_title{
+  float: left;
+  width: 50%;
+}
+
+.yes_or_no{
+  float: left;
+  width: 20%;
+  margin-bottom: 0.5em;
+}
+
+#next{
+  clear:both;
 }

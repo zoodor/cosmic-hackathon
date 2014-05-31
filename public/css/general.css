@@ -42,7 +42,7 @@ li:hover{
 
 #sign-in:hover, #finish-button:hover{
 	background-color: white;
-	color: blue;
+	color: black;
 	cursor: pointer;
 }
 

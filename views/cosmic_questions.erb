@@ -6,19 +6,23 @@
 		
 			<% @questions.each do |question| %>
 			<section class="question">
-				<%= question.title %>
+				<section class="question_title">
+					<%= question.title %>
+				</section>
 
-				<input type="radio" id="yes_<%= question.id %>" name="yes_no_<%= question.id %>" value="yes"/>
-				<label for="yes_<%= question.id %>">Yes</label>
-				<input type="radio" id="no_<%= question.id %>" name="yes_no_<%= question.id %>" value="no"/>
-				<label for="no_<%= question.id %>">No</label>
+				<section class="yes_or_no">
+					<input type="radio" id="yes_<%= question.id %>" name="yes_no_<%= question.id %>" value="yes"/>
+					<label for="yes_<%= question.id %>">Yes</label>
+					<input type="radio" id="no_<%= question.id %>" name="yes_no_<%= question.id %>" value="no"/>
+					<label for="no_<%= question.id %>">No</label>
+				</section>
 
 			</section>
 			<% end %>
 			
 		
 
-		<input type="submit" value="Next"/>
+		<div id="next"><input type="submit" value="Next"/></div>
 	
 	</form>
 
