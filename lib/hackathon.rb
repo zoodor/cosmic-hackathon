@@ -51,7 +51,7 @@ class Hackathon < Sinatra::Base
 				:answer => answer)
 		end
 
-		redirect to('#{@patient_id}/start')
+		redirect to("#{@patient_id}/start")
 	end
 
 	get '/:patient_id/rate_medical_team' do
@@ -112,7 +112,7 @@ class Hackathon < Sinatra::Base
 				:statement_id => statement_id,
 				:rating => rating)
 		end
-		redirect to('#{@patient_id}/feelings')
+		redirect to("#{@patient_id}/start")
 	end
 
 end
