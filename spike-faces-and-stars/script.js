@@ -29,4 +29,14 @@ window.onload = function () {
         ev.target.appendChild(document.getElementById(data).cloneNode(true));
         console.log(star_counter);
     }
+
+    submit = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "./rate_medical_team", true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+        xhr.send(JSON.stringify(star_counter));
+
+        xhr.onloadend = function() {};
+    }
 }
