@@ -12,17 +12,17 @@ DataMapper.auto_upgrade!
 # DataMapper.auto_migrate!
 
 class Hackathon < Sinatra::Base
-  enable :sessions
+	enable :sessions
 
 	set :views, File.join(File.dirname(__FILE__), '..', 'views')
 
 	get '/' do
 		erb :index
-  end
+	end
 
-  get '/patient-details' do
-    erb :patient_details
-  end
+	get '/patient_details' do
+		erb :patient_details
+	end
 
 	get '/cosmic_questions' do
 		erb :cosmic_questions
@@ -36,6 +36,18 @@ class Hackathon < Sinatra::Base
 			:title => title,
 			:answer => answer)
 		redirect to('/')
+	end
+
+	post '/patient_details' do
+		name = params[:name]
+		redirect '/patient_details' unless name and not name.empty?
+
+		session[:user] = params[:name]
+		if params[:name] == 'bob'
+			redirect '/patient_details'
+		else
+			redirect '/'
+		end
 	end
 
 end
