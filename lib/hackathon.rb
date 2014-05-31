@@ -115,4 +115,8 @@ class Hackathon < Sinatra::Base
 		redirect to("#{@patient_id}/start")
 	end
 
+	get "/thank_you" do
+		erb :thank_you
+	end
+
 end

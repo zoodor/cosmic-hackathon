@@ -3,15 +3,20 @@
 <article class="questions">
 	<form action="/<%= @patient_id %>/cosmic_questions" method="post">
 		
-		<section class="question">
+		
 			<% @questions.each do |question| %>
-			<%= question.title %>
+			<section class="question">
+				<%= question.title %>
 
-			<input type="radio" name="yes_no_<%= question.id %>" value="yes">Yes</input>
-			<input type="radio" name="yes_no_<%= question.id %>" value="no">No</input>
+				<input type="radio" id="yes_<%= question.id %>" name="yes_no_<%= question.id %>" value="yes"/>
+				<label for="yes_<%= question.id %>">Yes</label>
+				<input type="radio" id="no_<%= question.id %>" name="yes_no_<%= question.id %>" value="no"/>
+				<label for="no_<%= question.id %>">No</label>
+
+			</section>
 			<% end %>
 			
-		</section>
+		
 
 		<input type="submit" value="Next"/>
 	
