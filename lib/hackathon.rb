@@ -6,6 +6,8 @@ DataMapper.setup(:default, "postgres://localhost/hackathon")
 require_relative 'cosmic_questions'
 require_relative 'cosmic_answer'
 require_relative 'patient'
+require_relative 'feelings_statements'
+require_relative 'feelings_ratings'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -63,6 +65,26 @@ class Hackathon < Sinatra::Base
 		id = params[:id]
 		@patient = Patient.get(id)
 		erb :start
+	end
+
+	get '/:id/feelings' do
+		@statements = FeelingsStatement.statements
+		erb :feelings
+	end
+
+	post '/:id/feelings' do
+		patient_id = params[:id]
+		@statements = FeelingsStatement.statements
+
+		@statements.each do |statement|
+			statement_id = statement.id
+			rating = params["statement_#{statement_id}"]
+
+			FeelingsRating.create(
+				:patient_id => patient_id,
+				:statement_id => statement_id,
+				:rating => rating)
+		end
 	end
 
 end

@@ -1,0 +1,32 @@
+<script src='/javascript/feelings.js'></script>
+<link rel="stylesheet" type="text/css" href="/css/feelings.css">
+
+<h2>Feelings</h2>
+
+<article class="questions_feelings">
+	<form action="/<%= @patient_id %>/feelings" method="post">
+
+		<section id="ratings">
+			<ul>
+				<li class="rating" id="happy" ondrop="drop(event)" ondragover="allowDrop(event)">Happy</li>
+				<li class="rating" id="mellow" ondrop="drop(event)" ondragover="allowDrop(event)">Mellow</li>
+				<li class="rating" id="unhappy" ondrop="drop(event)" ondragover="allowDrop(event)">Unhappy</li>
+			</ul>
+		</section>
+		
+		<section class="statements">
+			<% @statements.each do |statement| %>
+			<span id="statement<%=statement.id%>" class="statement" draggable="true" ondragstart="drag(event)"><%= statement.title %></span>
+			<% end %>
+
+		</section>
+
+		<input type="submit" value="Next"/>
+	
+	</form>
+
+	
+
+	
+	
+</article>
