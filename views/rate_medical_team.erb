@@ -1,11 +1,15 @@
     <style>
+	  @font-face {
+		font-family: 'DK Cool Crayon';
+		src: url('dkcoolcrayon.ttf');
+	  }
       .medical-professional {
       float:left;
-      width:100px; height:100px;
+      width:100px; 
+	  height:100px;
       margin:10px;
       padding:10px;
-      border:1px solid #aaaaaa;
-      position:relative;
+	  border:0px;
       }
       .medical-professional-image {
       position:absolute;
@@ -14,21 +18,23 @@
       z-index:-1;
       }
       .button {
-      width:100px;
-      height:50px;
-      background-color: #450078;
       display: block;
       float:left;
+	  font-family: 'DK Cool Crayon', 'Arial';
       }
     </style>
     <script src='/javascript/rate_medical_team.js'></script>
 
-    <% @professionals.each do |professional| %>
-    <div id="<%= professional.id %>" class="medical-professional" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <img src="/images/<%= professional.image_url%>" class="medical-professional-image" width="100" height="100">
-    </div>
-    <% end %>
+	<div class="medical-team-panel">
+	    <% @professionals.each do |professional| %>
+	    <div id="<%= professional.id %>" class="medical-professional" ondrop="drop(event)" ondragover="allowDrop(event)">
+	      <img src="/images/<%= professional.image_url%>" class="medical-professional-image" width="100" height="100">
+	    </div>
+	    <% end %>
+	</div>
 
-    <img id="drag1" src="/images/star.jpg" draggable="true" ondragstart="drag(event)" width="35" height="35">
-
+	<p>
+    	<img id="drag1" src="/images/star.jpg" draggable="true" ondragstart="drag(event)" width="35" height="35">
+	</p>
+	
     <div class="button" onclick="submit(<%= @patient_id %>)">Submit</div>
