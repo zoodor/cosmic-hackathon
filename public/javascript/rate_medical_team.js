@@ -13,7 +13,7 @@ window.onload = function () {
     
     var medical_team = document.getElementsByClassName('medical-professional');
     
-    var team_names = Array.prototype.map.call(
+    Array.prototype.map.call(
         medical_team, 
         function(e) {
             star_counter[e.id] = 0; 
@@ -30,9 +30,9 @@ window.onload = function () {
         console.log(star_counter);
     }
 
-    submit = function() {
+    submit = function(patientId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("post", "./rate_medical_team", true);
+        xhr.open("post", "/" + patientId + "/rate_medical_team", true);
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
         xhr.send(JSON.stringify(star_counter));

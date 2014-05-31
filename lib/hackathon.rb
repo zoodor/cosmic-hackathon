@@ -54,17 +54,19 @@ class Hackathon < Sinatra::Base
 		redirect to('/')
 	end
 
-	get '/rate_medical_team' do
+	get '/:patient_id/rate_medical_team' do
+		@patient_id = params[:patient_id]
 		@professionals = MedicalProfessional.professionals
 		erb :rate_medical_team
 	end
 
-	post '/rate_medical_team' do
+	post '/:patient_id/rate_medical_team' do
+		patient_id = params[:patient_id]
 		post_data = JSON.parse(request.body.read)
 
 		post_data.each do |key, value|
 			MedicalProfessionalRating.create(
-				:patient_id => 1,
+				:patient_id => patient_id,
 				:medical_professional_id => key,
 				:rating => value
 			)
