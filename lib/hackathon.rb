@@ -6,6 +6,7 @@ require 'data_mapper'
 DataMapper.setup(:default, "postgres://localhost/hackathon")
 
 require_relative 'cosmic_questions'
+require_relative 'patient'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -42,12 +43,17 @@ class Hackathon < Sinatra::Base
 		name = params[:name]
 		redirect '/patient_details' unless name and not name.empty?
 
-		session[:user] = params[:name]
-		if params[:name] == 'bob'
-			redirect '/patient_details'
-		else
-			redirect '/'
-		end
+		@patient = Patient.create(
+			:name => name
+		)
+		session[:user_id] = @patient.id
+		redirect to("#{@patient.id}/start")
+	end
+
+	get '/:id/start' do
+		id = params[:id]
+		@patient = Patient.get(id)
+		erb :start
 	end
 
 end
