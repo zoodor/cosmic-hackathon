@@ -1,12 +1,40 @@
-.rating {
-	height: 20%;
-	background-color: blue;
+.ratings{
+	position:fixed;
+	/*margin-left: 30%;*/
 }
 
-#ratings li{
-	margin: 1em 0;
+.rating{
+	height: 50%;
+	background-color: pink;
+	color: white;
+	display: inline-block;
+	width: 20%;
+	margin: 1em 1.5em;
+	/*position:fixed;*/
+	float: left;
+	
+
+
+
 }
 
-#ratings ul{
-	display: inline;
+.rating ul {
+	height: 80%;
+}
+
+.statements{
+	clear: both;
+}
+
+.statement{
+	float:left;
+	padding: 0.1em;
+	margin: 0.1em;
+	border-radius: 10;
+	background-color: white;
+	color: black;
+}
+
+.stop{
+	clear: both;
 }
