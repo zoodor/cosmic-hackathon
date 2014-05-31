@@ -12,6 +12,7 @@ DataMapper.auto_upgrade!
 # DataMapper.auto_migrate!
 
 class Hackathon < Sinatra::Base
+  enable :sessions
 
 	set :views, File.join(File.dirname(__FILE__), '..', 'views')
 
